@@ -12,13 +12,13 @@ app.config(function($routeProvider) {
     .when("/signup", {
         
     })
-    .when("/user", {
-        templateUrl: "app/user/user.html",
-        controller: "userCtrl"
+    .when("/appUser", {
+        templateUrl: "app/user/appUser.html",
+        controller: "appUserCtrl"
     })
-    .when("/new", {
-        templateUrl: "app/user/newUser.html",
-        controller: "newUserCtrl"
+    .when("/newAppUser", {
+        templateUrl: "app/user/newAppUser.html",
+        controller: "newAppUserCtrl"
     })
     .when("/recipe/:id", {
         
