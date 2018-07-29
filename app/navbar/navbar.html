@@ -1,0 +1,33 @@
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Family Activities Managment</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item" ng-show="isUserLoggedIn()">
+                <a class="nav-link" href="#!/user">User</a>
+            </li>
+            <li class="nav-item" ng-show="isUserLoggedIn()">
+                <a class="nav-link" href="#!/new">Create Activity</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" ng-hide="isUserLoggedIn()">
+                <a class="nav-link" href="#">Sign Up</a>
+            </li>
+            <li class="nav-item" ng-hide="isUserLoggedIn()">
+                <a class="nav-link" ng-href="#!/login">Login</a>
+            </li>
+            <li class="nav-item" ng-show="isUserLoggedIn()">
+                <a class="nav-link" href="javascript:void(0)" ng-click="logout()">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
