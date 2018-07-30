@@ -1,4 +1,4 @@
-app.controller("loginCtrl", function($scope, user, $location) {
+app.controller("signupCtrl", function($scope, user, $location) {
     
     $scope.email = "";
     $scope.password = "";
@@ -6,7 +6,7 @@ app.controller("loginCtrl", function($scope, user, $location) {
 
     $scope.login = function() {
         $scope.invalidLogin = false;
-        user.login($scope.email, $scope.password).then(function(activeUser){
+        user.signup($scope.email, $scope.password).then(function(activeUser){
             $location.path("/newAppUser");
         }, function() {
             $scope.invalidLogin = true;

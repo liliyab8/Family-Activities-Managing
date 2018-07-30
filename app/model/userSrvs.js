@@ -33,9 +33,26 @@ app.factory('user', function($http, $q) {
         }, function(err) {
             async.reject(err);
         });    
-        return async.promise;
-      
+        return async.promise;     
    }
+
+   function signUp(email, password) {
+    var async = $q.defer();
+    var firstUserUrl = "https://family-managment.herokuapp.com/users";        
+    
+     $http.post(firstUserUrl, user).then(function(response, status) {
+        var users = response.data;
+
+        //user = new
+        //users.push(user) ;          
+         async.resolve(activeUser);
+     }, function(err) {
+         async.reject(err);
+     });    
+     return async.promise;
+   
+}
+
     return {
         login: login,
         isLoggedIn: isLoggedIn,
