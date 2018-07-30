@@ -3,9 +3,11 @@ app.factory('user', function($http, $q) {
     var activeUser = null;
 
     function User(plainUser) {
-       this.fname = plainUser.fname;
-       this.lname = plainUser.lname;
+       this.id = plainUser.id;
+       this.first_name = plainUser.first_name;
+       this.last_name = plainUser.last_name;
        this.email = plainUser.email;
+       this.password = plainUser.password;
    } 
 
    function isLoggedIn() {
@@ -18,18 +20,25 @@ app.factory('user', function($http, $q) {
 
     function login(email, password) {
        var async = $q.defer();
-        if (email === "liliya.belogolov@gmail.com" && password === "12345") {
-           activeUser = new User({fname:"Liliya", lname:"Belogolov", email:email})
-           async.resolve(activeUser);
-       } else {
-           async.reject();
-       }
+       var firstUserUrl = "https://family-managment.herokuapp.com/users";        
+       
+        $http.get(firstUserUrl).then(function(response) {
+           var users = response.data;
+           for(i = 0; i<users.length; i++ ){
+                if(users[i].email == email && users[i].password == password){
+                    activeUser = new User(users[i]);
+                }
+           }           
+            async.resolve(activeUser);
+        }, function(err) {
+            async.reject(err);
+        });    
         return async.promise;
+      
    }
     return {
         login: login,
         isLoggedIn: isLoggedIn,
         logout: logout
-        }
-   }
+        }   
 }) 

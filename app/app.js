@@ -17,7 +17,7 @@ app.config(function($routeProvider) {
         controller: "appUserCtrl"
     })
     .when("/newAppUser", {
-        templateUrl: "app/user/newAppUser.html",
+        templateUrl: "app/users/newAppUser.html",
         controller: "newAppUserCtrl"
     })
     .when("/recipe/:id", {
