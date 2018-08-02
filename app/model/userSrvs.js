@@ -3,12 +3,21 @@ app.factory('user', function($http, $q) {
     var activeUser = null;
 
     function User(plainUser) {
-       this.id = plainUser.id;
+    //    this.id = plainUser.id;
        this.first_name = plainUser.first_name;
        this.last_name = plainUser.last_name;
        this.email = plainUser.email;
        this.password = plainUser.password;
    } 
+
+   function User(first_name, last_name, email, password) {
+    // this.id = id;
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.password = password;
+} 
+
 
    function isLoggedIn() {
     return activeUser ? true : false;
@@ -36,26 +45,23 @@ app.factory('user', function($http, $q) {
         return async.promise;     
    }
 
-   function signUp(email, password) {
+   function signUp(first_name, last_name, email, password) {
     var async = $q.defer();
     var firstUserUrl = "https://family-managment.herokuapp.com/users";        
-    
+    var user = new User(first_name, last_name, email, password);
      $http.post(firstUserUrl, user).then(function(response, status) {
-        var users = response.data;
-
-        //user = new
-        //users.push(user) ;          
-         async.resolve(activeUser);
+        activeUser = response.data;       
+        // users.push(user) ;          
+        async.resolve(activeUser);
      }, function(err) {
          async.reject(err);
      });    
-     return async.promise;
-   
+     return async.promise;   
 }
-
     return {
         login: login,
         isLoggedIn: isLoggedIn,
-        logout: logout
+        logout: logout,
+        signUp: signUp
         }   
 }) 

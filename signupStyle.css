@@ -18,10 +18,10 @@
     overflow:auto;    
 }
 /*-----for border----*/
-.signup-container{
-   font-family:Roboto,sans-serif;
+/* .signup-container{
+    font-family:Roboto,sans-serif;
     background-image:url(https://i0.wp.com/whelihanlaw.com/wp-content/uploads/2014/04/Shade-box-gradient.png?ssl=1) ; 
-    /* background-image: rgba(0, 0, 0, 0.4); */
+    background-image: rgba(0, 0, 0, 0.4);
     border-style: 1px solid grey;    
     margin: auto;
     margin-top: 20px;
@@ -31,6 +31,13 @@
     max-width: 500px;
     padding-top: 10px;
     height: 363px;
+} */
+
+.signup-container{
+   
+    background-image:url(https://i0.wp.com/whelihanlaw.com/wp-content/uploads/2014/04/Shade-box-gradient.png?ssl=1) ; 
+    margin: auto;
+    text-align: center; 
 }
 /*--- for label of first and last name---*/
 .lastname{
