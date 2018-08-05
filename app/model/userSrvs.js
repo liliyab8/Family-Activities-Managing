@@ -68,6 +68,29 @@ app.factory('user', function ($http, $q) {
         return async.promise;
     }
 
+    function displayUsers(email, password) {
+        var async = $q.defer();
+        var firstUserUrl = "https://family-managment.herokuapp.com/users";
+
+        $http.get(firstUserUrl).then(function (response) {
+            var users = response.data;
+            for (i = 0; i < users.length; i++) {
+                    usersCardsArray.push(new User(users[i].first_name, users[i].last_name, 
+                        users[i].email, users[i].password, users[i].image));
+            }    
+
+            // this.first_name = plainUser.first_name;
+            // this.last_name = plainUser.last_name;
+            // this.email = plainUser.email;
+            // this.password = plainUser.password;
+            // this.image = plainUser.image;
+            async.resolve(usersCardsArray);
+        }, function (err) {
+            async.reject(err);
+        });
+        return async.promise;
+    }
+
     function signUp(first_name, last_name, email, password, image) {
         var async = $q.defer();
         var firstUserUrl = "https://family-managment.herokuapp.com/users";
@@ -85,6 +108,7 @@ app.factory('user', function ($http, $q) {
         login: login,
         isLoggedIn: isLoggedIn,
         logout: logout,
-        signUp: signUp
+        signUp: signUp,
+        displayUsers: displayUsers
     }
 }) 
