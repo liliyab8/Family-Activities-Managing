@@ -40,6 +40,15 @@
     text-align: center; 
 }
 /*--- for label of first and last name---*/
+
+.label{
+    margin-left: 1px;
+    font-family: sans-serif;
+    font-size: 14px;
+    color: white;
+    margin-top: 10px;
+}
+
 .lastname{
     margin-left: 1px;
     font-family: sans-serif;

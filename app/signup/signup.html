@@ -1,44 +1,50 @@
-<!-- <div class="signup-body"> -->
-<!-- <div class="signup-container"> -->
-<div class="signup-container w-50">
-	<!-- <form class="form-horizontal" action="/action_page.php"> -->
-	<form class="form-horizontal" action="/html/tags/html_form_tag_action.cfm">
-		<header class="heading"> Registration-Form</header>
-		<hr></hr>
-		<div class="form-group row">
-			<label class="col-3 col-form-label">First Name :</label>
-			<div class="col-6">
-				<input type="text" name="fname" id="fname" placeholder="Enter your First Name" class="form-control" ng-model="first_name">
+<div class="signup-body">
+	<!-- <div class="signup-container"> -->
+	<div class="signup-container w-50">
+		<!-- <form class="form-horizontal" action="/action_page.php"> -->
+		<form class="form-horizontal" action="/html/tags/html_form_tag_action.cfm">
+			<header class="heading"> Registration-Form</header>
+			<hr></hr>
+			<div class="form-group row">
+				<label class="col-3 col-form-label label">First Name :</label>
+				<div class="col-6">
+					<input type="text" name="fname" id="fname" placeholder="Enter your First Name" class="form-control" ng-model="first_name">
+				</div>
 			</div>
-		</div>
-		<div class="form-group row">
-			<label class="col-3 col-form-label">Last Name :</label>
-			<div class="col-6">
-				<input type="text" name="lname" id="lname" placeholder="Enter your Last Name" class="form-control last" ng-model="last_name">
+			<div class="form-group row">
+				<label class="col-3 col-form-label label">Last Name :</label>
+				<div class="col-6">
+					<input type="text" name="lname" id="lname" placeholder="Enter your Last Name" class="form-control last" ng-model="last_name">
+				</div>
 			</div>
-		</div>
-		<!-----For email---->
-		<div class="form-group row">
-			<label class="col-3 col-form-label">Email :</label>
-			<div class="col-6">
-				<input type="email" name="email" id="email" placeholder="Enter your email" class="form-control" ng-model="email">
+			<!-----For email---->
+			<div class="form-group row">
+				<label class="col-3 col-form-label label">Email :</label>
+				<div class="col-6">
+					<input type="email" name="email" id="email" placeholder="Enter your email" class="form-control" ng-model="email">
+				</div>
 			</div>
-		</div>
-		<!-----For Password and confirm password---->
-		<div class="form-group row">
-			<label class="col-3 col-form-label">Password :</label>
-			<div class="col-6">
-				<input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control" ng-model="password">
+			<!-----For input picture---->
+			<div class="form-group row">
+				<label for="image" class="col-3 col-form-label label">Image Url</label>
+				<div class="col-6">
+					<input type="file" accept="image/*" image="image" id="image" ng-model="image" />
+				</div>
 			</div>
-		</div>
-		<!-- ---------For Phone number------ -->
-		<div class="form-group row">
-			<div class="offset-1 col-9">
-				<div class="btn btn-warning sbutton" ng-click="signUp()">Submit</div>
+			<!-----For Password and confirm password---->
+			<div class="form-group row">
+				<label class="col-3 col-form-label label">Password :</label>
+				<div class="col-6">
+					<input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control" ng-model="password">
+				</div>
 			</div>
-		</div>
-	</form>
+			<!-- For Phone number-->
+			<div class="form-group row">
+				<div class="offset-1 col-9">
+					<div class="btn btn-warning sbutton" ng-click="signUp()">Submit</div>
+				</div>
+			</div>
+		</form>
+		<img class="img-fluid" ng-src="{{image.url}}" alt="{{fname}}">
+	</div>
 </div>
-</div>
-<!-- </div> -->
-<!-- </div> -->

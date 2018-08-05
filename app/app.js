@@ -1,4 +1,4 @@
-var app = angular.module("FAMApp", ["ngRoute"]);
+var app = angular.module("FAMApp", ["ngRoute", "imageupload"]);
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -21,8 +21,9 @@ app.config(function($routeProvider) {
         templateUrl: "app/users/newAppUser.html",
         controller: "newAppUserCtrl"
     })
-    .when("/recipe/:id", {
-        
+    .when("/main", {
+        templateUrl: "app/main/main.html",
+        controller: "mainCtrl"
     })
 
 
