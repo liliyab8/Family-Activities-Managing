@@ -1,11 +1,17 @@
-<div class="card-deck">
-    <div class="container-fluid" ng-controller="mainCtrl">
-        <div class="row" ng-repeat="userCard in usersCardsArray">
-            <div class="col-sm-4">
-                <div class="card">
-                        <img class="card-img-top" src={{userCard.image.dataURL}} alt="Card image cap">
-                    <div class="card-body">
+<fam-navbar></fam-navbar>
+<div class="jumbotron">
+    <div class="container">
+        <a href="#" class="btn btn-primary">See the calendar</a>
+    </div>
+</div>
 
+<div class="card-deck">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 col-lg-3" ng-repeat="userCard in usersCardsArray">
+                <div class="card">
+                    <img class="card-img-top" ng-src={{userCard.image.dataURL}}>
+                    <div class="card-body">
                         <h5 class="card-title">{{userCard.first_name}} {{userCard.last_name}}</h5>
                         <p class="card-text">bla bla</p>
                         <a href="#" class="btn btn-primary">Go somewhere</a>

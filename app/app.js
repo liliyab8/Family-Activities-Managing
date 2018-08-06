@@ -25,6 +25,10 @@ app.config(function($routeProvider) {
         templateUrl: "app/main/main.html",
         controller: "mainCtrl"
     })
+    .when("/calendar", {
+        templateUrl: "app/calendar/calendar.html",
+        controller: "calendarCtrl"
+    })
 
 
 });

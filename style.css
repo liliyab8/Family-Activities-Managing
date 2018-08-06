@@ -7,7 +7,7 @@
     object-fit: cover;
 } */
 
-.jumbotron {
+.jumbotron-home {
     background-image: url("http://www.aimeeusa.com/wp-content/uploads/2017/10/family-unit-immigration-australia-visa.jpg");
     background-size: cover;
     height: 100%; 
@@ -21,6 +21,14 @@
     background: -moz-linear-gradient(bottom, #DAA520 40%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
     background: -o-linear-gradient(bottom, #DAA520 40%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
     background: linear-gradient(to top, #DAA520 40%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.card-img-top {
+    background: url("https://thumb7.shutterstock.com/display_pic_with_logo/875551/398249344/stock-vector-monster-with-greeting-text-hello-strange-cartoon-creature-character-alien-comic-fun-vector-398249344.jpg");
+    background-size: cover;    
+    width: 100%;
+    height: 25vw;
+    object-fit: cover;
 }
 
 

@@ -1,15 +1,17 @@
-app.controller("mainCtrl", function($scope, user, $location) {    
-    
+app.controller("mainCtrl", function ($scope, user, $location) {
+
     $location.path("/main");
     $scope.usersCardsArray = [];
 
-    $scope.displayusers = function() {
+    $scope.displayusers = function () {
         // $scope.invalidLogin = false;
-       user.displayUsers().then(function(usersCardsArray){
-        $scope.usersCardsArray = usersCardsArray;
-       }, function() {
-        //    $scope.invalidLogin = true;
-       })
+        $scope.usersCardsArray = ($scope.usersCardsArray).slice(0, 0);
+
+        user.displayUsers().then(function (usersCardsArray) {
+            $scope.usersCardsArray = usersCardsArray;
+        }, function () {
+            //    $scope.invalidLogin = true;
+        })
     }
 
     // if (!user.isLoggedIn()) {

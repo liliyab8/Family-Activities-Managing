@@ -2,22 +2,7 @@ app.factory('user', function ($http, $q) {
 
     var activeUser = null;
 
-    usersCardsArray = [
-        {
-            first_name: "Mila",
-            last_name: "Belogolov",
-            email: "liliya.belogolov@gmail.com",
-            password: "123",
-            image: "C:\Users\USER\Pictures\Saved Pictures\mila.jpg"
-        },
-        {
-            first_name: "Vanesa",
-            last_name: "Belogolov",
-            email: "liliya.belogolov@gmail.com",
-            password: "123",
-            image: "C:\Users\USER\Pictures\Saved Pictures\vanesa.JPG"
-        }
-    ];
+    usersCardsArray = [];
 
     function User(plainUser) {
         this.first_name = plainUser.first_name;
@@ -71,19 +56,13 @@ app.factory('user', function ($http, $q) {
     function displayUsers(email, password) {
         var async = $q.defer();
         var firstUserUrl = "https://family-managment.herokuapp.com/users";
-
+        usersCardsArray = usersCardsArray.slice(0, 0);
         $http.get(firstUserUrl).then(function (response) {
             var users = response.data;
             for (i = 0; i < users.length; i++) {
                     usersCardsArray.push(new User(users[i].first_name, users[i].last_name, 
                         users[i].email, users[i].password, users[i].image));
-            }    
-
-            // this.first_name = plainUser.first_name;
-            // this.last_name = plainUser.last_name;
-            // this.email = plainUser.email;
-            // this.password = plainUser.password;
-            // this.image = plainUser.image;
+            }
             async.resolve(usersCardsArray);
         }, function (err) {
             async.reject(err);
