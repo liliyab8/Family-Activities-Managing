@@ -8,4 +8,9 @@ app.controller("navbarCtrl", function($scope, user, $location) {
         user.logout();
         $location.path("/");
     }
+
+    $scope.getActiveUser = function() {
+        return user.getActiveUserName();
+    }
+
 })
