@@ -1,4 +1,4 @@
-app.controller("addEventCtrl", function($scope, user, $location) {
+app.controller("createEventCtrl", function($scope, user, $location) {
     
     
     $scope.login = function() {

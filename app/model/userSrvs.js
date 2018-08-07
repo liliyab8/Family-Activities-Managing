@@ -32,7 +32,7 @@ app.factory('user', function ($http, $q) {
     }
 
     function getActiveUserName() {
-        return activeUser.first_name;
+        return activeUser;
     }
 
     function logout() {

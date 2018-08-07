@@ -29,4 +29,8 @@ app.config(function($routeProvider) {
         templateUrl: "app/calendar/calendar.html",
         controller: "calendarCtrl"
     })
+    .when("/createEvent", {
+        templateUrl: "app/event/createEvent.html",
+        controller: "createEventCtrl"
+    })
 });
