@@ -1,0 +1,13 @@
+<div>
+    <fam-navbar></fam-navbar>
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Family Calendar</h1>
+        </div>
+    </div>
+    <div class="calendar">
+        <mwl-calendar view="calendarView" view-date="viewDate" events="events" view-title="calendarTitle" on-event-click="eventClicked(calendarEvent)"
+            <!-- on-event-times-changed="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd" cell-is-open="true"> -->
+        </mwl-calendar>
+    </div>
+</div>

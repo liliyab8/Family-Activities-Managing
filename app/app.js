@@ -1,4 +1,4 @@
-var app = angular.module("FAMApp", ["ngRoute", "imageupload"]);
+var app = angular.module("FAMApp", ["ngRoute", "imageupload", "mwl.calendar", "ui.bootstrap"]);
 
 app.config(function($routeProvider) {
     $routeProvider
