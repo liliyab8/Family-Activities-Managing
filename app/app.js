@@ -1,5 +1,5 @@
-var app = angular.module("FAMApp", ["ngRoute", "imageupload", "mwl.calendar", "ui.bootstrap", 'ngAnimate', 'colorpicker.module']);
-//['mwl.calendar', 'ui.bootstrap', 'ngAnimate']
+var app = angular.module("FAMApp", ["ngRoute", "imageupload", "mwl.calendar", "ui.bootstrap", "ngAnimate", "colorpicker.module"]);
+
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {

@@ -4,34 +4,15 @@ app.controller("signupCtrl", function ($scope, user, $location) {
     $scope.password = "";
     $scope.image = "";
     $scope.invalidLogin = false;
+    $scope.activeUser = null;
 
     $scope.signUp = function () {
         $scope.invalidLogin = false;              
             user.signUp($scope.first_name, $scope.last_name, $scope.email, $scope.password, $scope.image).then(function (activeUser) {               
-                $location.path("/newAppUser");
-                
+                $scope.activeUser = activeUser;
+                $location.path("/main");                
             }, function () {
                 $scope.invalidLogin = true;
             })        
     }
-    // $scope.createUserCard = function () {
-    //     userCard.createUserCard({
-    //         first_name = $scope.first_name,
-    //         last_name = $scope.last_name,
-    //         email = $scope.email,
-    //         password = $scope.password,
-    //         image = $scope.image,
-    //         // imageUrl: $scope.image.dataURL, userId: user.getActiveUser().id
-    //     }).then(function () {
-    //         $location.path("/newAppUser")
-    //     }, function (err) {
-    //         console.log(err);
-    //     })
-    // }
-
-    // return {
-    //     signUp: signUp
-    //     // createUserCard: createUserCard
-    // }
-
 })
