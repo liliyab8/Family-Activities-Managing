@@ -1,5 +1,5 @@
-var app = angular.module("FAMApp", ["ngRoute", "imageupload", "mwl.calendar", "ui.bootstrap"]);
-
+var app = angular.module("FAMApp", ["ngRoute", "imageupload", "mwl.calendar", "ui.bootstrap", 'ngAnimate', 'colorpicker.module']);
+//['mwl.calendar', 'ui.bootstrap', 'ngAnimate']
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
@@ -29,6 +29,4 @@ app.config(function($routeProvider) {
         templateUrl: "app/calendar/calendar.html",
         controller: "calendarCtrl"
     })
-
-
 });
