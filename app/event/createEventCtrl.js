@@ -1,4 +1,9 @@
-app.controller("createEventCtrl", function ($scope, user, event, $location) {
+app.controller("createEventCtrl", function ($scope, event) {
+
+    $scope.title = "";
+    $scope.startsAt = "";
+    $scope.endsAt = "";
+    $scope.allDay = "";
 
     $scope.createEvent = function (title, startsAt, endsAt, allDay) {
         event.createEvent(title, startsAt, endsAt, allDay);
@@ -10,5 +15,9 @@ app.controller("createEventCtrl", function ($scope, user, event, $location) {
 
     $scope.getallEvents = function () {
         return event.getallEvents();
+    }
+
+    $scope.isAllDayEvent= function () {
+        return $scope.allDay;
     }
 })
