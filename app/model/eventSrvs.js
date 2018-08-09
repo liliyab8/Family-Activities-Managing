@@ -1,6 +1,6 @@
-app.factory('event', function ($http, $q) {
+app.factory('event', function ($http, $q, $location, user) {
     
-    function Event(userName, title, color, startsAt, endsAt, draggable, resizable, actions, allDay) {
+    function Event(userName, title, color, startsAt, endsAt, draggable, resizable, actions, allDay, comments, image) {
         this.userName = userName;
         this.title = title,
         this.color = color;
@@ -10,6 +10,8 @@ app.factory('event', function ($http, $q) {
         this.resizable = resizable;
         this.actions = actions;
         this.allDay = allDay;
+        this.comments = comments;
+        this.image = image;
     }
 
     var actions = [{
@@ -52,8 +54,12 @@ app.factory('event', function ($http, $q) {
         return events;
     }
 
-    function getUserEvents(userName){
-        var userEventsArray;
+    function getUserEvents(){
+
+        var userEventsArray= [];
+
+        var userName =user.getActiveUserName().first_name; 
+
         events.forEach(event => {    
             if(event.userName == userName)
             {
@@ -63,15 +69,24 @@ app.factory('event', function ($http, $q) {
             return userEventsArray;
     }
 
-    function createEvent(userName, title, startsAt, endsAt, allDay) {
+    function createEvent(title, startsAt, endsAt, allDay, date, comments, image) {
 
         var color = "orange";
         var draggable = true;
         var resizable = true;
         var actions = actions;
 
-        var newEvent = new Event(userName, title, color, startsAt, endsAt, draggable, resizable, actions, allDay);
+        var userName =user.getActiveUserName().first_name; 
+
+        if(allDay){
+            
+            startsAt = moment(new Date(date)).startOf('day').toDate();
+            endsAt = moment(new Date(date)).endOf('day').toDate();
+        }
+
+        var newEvent = new Event(userName, title, color, startsAt, endsAt, draggable, resizable, actions, allDay, comments, image);
         events.push(newEvent);
+        $location.path("/user");
         return newEvent;
     }
 

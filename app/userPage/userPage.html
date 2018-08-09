@@ -1,9 +1,29 @@
 <div>
     <fam-navbar></fam-navbar>
-    <div class="jumbotron">
+    
         <div class="container">
                 <a href="#!/createEvent" class="btn btn-warning sbutton">Create a new event</a>
         </div>
-    </div>
+
+        <div class="card-deck">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-3" ng-repeat="userEvent in userEventsArray">
+                            <div class="card">
+                                <img class="card-img-top" ng-src={{userEvent.image.dataURL}}>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{userEvent.userName}}</h5>
+                                    <p class="card-text">{{userEvent.title}}</p>
+                                    <p class="card-text">{{userEvent.startsAt}}</p>
+                                    <p class="card-text">{{userEvent.endsAt}}</p>
+                                    <p class="card-text">{{userEvent.comments}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>       
+                </div>
+            </div>
+           
+
 </div>
 

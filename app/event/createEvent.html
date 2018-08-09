@@ -19,7 +19,6 @@
         </div>
       </div>
 
-
       <div class="form-group row" ng-hide="isAllDayEvent()">
         <label class="col-3 col-form-label label">Event Start Date:</label>
         <div class="col-6">
@@ -34,6 +33,13 @@
         </div>
       </div>
 
+      <div class="form-group row" ng-hide="isNotAllDayEvent()">
+          <label class="col-3 col-form-label label">Event Date:</label>
+          <div class="col-6">
+            <input type="date" name="event_date" id="event_date" class="form-control" ng-model="date">
+          </div>
+        </div>
+
       <div class="form-group row" >
         <label class="col-3 col-form-label label">Event Comments:</label>
         <div class="col-6">
@@ -42,7 +48,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="image" class="col-3 col-form-label label">Event Images</label>
+        <label for="image" class="col-3 col-form-label label">Event Image Url</label>
         <div class="col-6">
           <input type="file" accept="image/*" image="image" id="image" ng-model="image" />
         </div>
@@ -55,5 +61,6 @@
       </div>
   </div>
   </form>
+
 </div>
 </div>
