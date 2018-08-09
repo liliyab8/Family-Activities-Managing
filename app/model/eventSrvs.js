@@ -12,53 +12,41 @@ app.factory('event', function ($http, $q) {
         this.allDay = allDay;
     }
 
-   // events = [];
-    // events = [
-    //     {
-    //       title: 'An event',
-    //       color: "orange",
-    //       // startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
-    //       startsAt: moment(new Date (2018,08,10,09,30)).toDate(),
-    //       // startsAt:  moment({ years:'2018', months:'8', date:'9', hours:'15', minutes:'10', seconds:'0', milliseconds:'0'}),
-    //       endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
-    //       draggable: true,
-    //       resizable: true,
-    //       actions: actions,
-    //       allDay: true 
-    //     }, {
-    //       title: '<i class="glyphicon glyphicon-asterisk"></i> <span class="text-primary">Another event</span>, with a <i>html</i> title',
-    //       color: "orange",
-    //       startsAt: moment().subtract(1, 'day').toDate(),
-    //       endsAt: moment().add(5, 'days').toDate(),
-    //       draggable: true,
-    //       resizable: true,
-    //       actions: actions,
-    //       allDay: true 
-    //     }, {
-    //       title: 'This is a really long event title that occurs on every year',
-    //       color: "orange",
-    //       startsAt: moment().startOf('day').add(7, 'hours').toDate(),
-    //       endsAt: moment().startOf('day').add(19, 'hours').toDate(),
-    //       recursOn: 'year',
-    //       draggable: true,
-    //       resizable: true,
-    //       actions: actions,
-    //       allDay: true 
-    //     }
-    //   ];
+    var actions = [{
+        label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
+        onClick: function(args) {
+          alert.show('Edited', args.calendarEvent);
+        }
+      }, {
+        label: '<i class=\'glyphicon glyphicon-remove\'></i>',
+        onClick: function(args) {
+          alert.show('Deleted', args.calendarEvent);
+        }
+      }];
 
-    //{
-    //     title: 'An event',
-    //     color: calendarConfig.colorTypes.warning,
-    //     // startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
-    //     startsAt: moment(new Date (2018,08,10,09,30)).toDate(),
-    //     // startsAt:  moment({ years:'2018', months:'8', date:'9', hours:'15', minutes:'10', seconds:'0', milliseconds:'0'}),
-    //     endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
-    //     draggable: true,
-    //     resizable: true,
-    //     actions: actions,
-    //     allDay: true 
-    //   }
+    //events = [];
+    events = [
+        {
+          title: 'The First Event',
+          color: "orange",          
+          startsAt: moment(new Date (2018,07,10,09,30)).toDate(),
+          endsAt: moment(new Date (2018,07,10,10,15)).toDate(),
+          draggable: true,
+          resizable: true,
+          actions: actions,
+          allDay: true 
+        },
+        {
+            title: 'The Second Event',
+            color: "orange",          
+            startsAt: moment(new Date (2018,07,12,13,30)).toDate(),
+            endsAt: moment(new Date (2018,07-1,12,14,00)).toDate(),
+            draggable: true,
+            resizable: true,
+            actions: actions,
+            allDay: true 
+          }
+      ];
 
     function getallEvents(){
         return events;
@@ -87,9 +75,21 @@ app.factory('event', function ($http, $q) {
         return newEvent;
     }
 
+    function createEmptyEvent() {
+        events.push({
+                title: 'New event',
+                startsAt: moment().toDate(),
+                endsAt: moment().toDate(),
+                color: "orange",
+                draggable: true,
+                resizable: true
+              });
+    }
+
     return {
         getallEvents: getallEvents,
         getUserEvents: getUserEvents,
-        createEvent: createEvent
+        createEvent: createEvent,
+        createEmptyEvent: createEmptyEvent
     }
 })
