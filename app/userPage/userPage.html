@@ -12,11 +12,11 @@
                             <div class="card">
                                 <img class="card-img-top" ng-src={{userEvent.image.dataURL}}>
                                 <div class="card-body">
-                                    <h5 class="card-title">{{userEvent.userName}}</h5>
-                                    <p class="card-text">{{userEvent.title}}</p>
-                                    <p class="card-text">{{userEvent.startsAt}}</p>
-                                    <p class="card-text">{{userEvent.endsAt}}</p>
-                                    <p class="card-text">{{userEvent.comments}}</p>
+                                    <h5 class="card-title">Created by: {{userEvent.userName}}</h5>
+                                    <p class="card-text">Event: {{userEvent.title}}</p>
+                                    <p class="card-text">Event starts: {{userEvent.startsAt.toDateString()}} {{userEvent.startsAt.getHours()}}:{{userEvent.startsAt.getMinutes()}}</p>
+                                    <p class="card-text">Event ends: {{userEvent.endsAt.toDateString()}} {{userEvent.endsAt.getHours()}}:{{userEvent.endsAt.getMinutes()}}</p>
+                                    <p class="card-text">Comments: {{userEvent.comments}}</p>
                                 </div>
                             </div>
                         </div>
