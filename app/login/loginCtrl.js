@@ -14,4 +14,8 @@ app.controller("loginCtrl", function($scope, user, $location) {
             $scope.invalidLogin = true;
         })
     }
+
+    $scope.getActiveUser = function() {
+        return user.getActiveUserName();
+    }
 })

@@ -1,34 +1,18 @@
-// app.controller("calendarCtrl", function($scope, user, $location) {
-//     $scope.calendarView = 'month';
-//     $scope.viewDate = new Date(2018,5,1,1);
-//     // $scope.calendarTitle = 'CALENDAR';
-//     $scope.events = [
-//         {
-//           title: 'HUG', // The title of the event
-//           startsAt: new Date(2018,8,1,1), // A javascript date object for when the event starts
-//           endsAt: new Date(2018,8,26,15), // Optional - a javascript date object for when the event ends
-//           color: { // can also be calendarConfig.colorTypes.warning for shortcuts to the deprecated event types
-//             primary: '#e3bc08', // the primary event color (should be darker than secondary)
-//             secondary: '#fdf1ba' // the secondary event color (should be lighter than primary)
-//           },
-//           actions: [{ // an array of actions that will be displayed next to the event title
-//             label: '<i class=\'glyphicon glyphicon-pencil\'></i>', // the label of the action
-//             cssClass: 'edit-action', // a CSS class that will be added to the action element so you can implement custom styling
-//             onClick: function(args) { // the action that occurs when it is clicked. The first argument will be an object containing the parent event
-//               console.log('Edit event', args.calendarEvent);
-//             }
-//           }],
-//           draggable: true, //Allow an event to be dragged and dropped
-//           resizable: true, //Allow an event to be resizable
-//           incrementsBadgeTotal: true, //If set to false then will not count towards the badge total amount on the month and year view
-//           recursOn: 'year', // If set the event will recur on the given period. Valid values are year or month
-//           cssClass: 'a-css-class-name', //A CSS class (or more, just separate with spaces) that will be added to the event when it is displayed on each view. Useful for marking an event as selected / active etc
-//           allDay: false // set to true to display the event as an all day event on the day view
-//         }
-//       ];
-// })
+/* <div ng-controller="MyCalendarController as cal">
+        <mwl-calendar
+            view="cal.calendar.view"
+            view-date="cal.calendar.date"
+            events="cal.events.list"
+            view-title="cal.calendar.title"
+            custom-template-urls="{calendarMonthCell: 'customMonthCell.html'}"
+            cell-is-open="cal.calendar.cellIsOpen"
+            slide-box-disabled="true"
+            parent-ctl="cal"
+        >
+        </mwl-calendar>
+</div> */
 
-app.controller("calendarCtrl", function($scope, user, alert, $location, moment, calendarConfig) {
+app.controller("calendarCtrl", function($scope, user, event, alert, $location, moment, calendarConfig) {
 //angular.module('mwl.calendar.docs', ['mwl.calendar', 'ngAnimate', 'ui.bootstrap', 'colorpicker.module']);
 // angular.module('mwl.calendar.docs') //you will need to declare your module with the dependencies ['mwl.calendar', 'ui.bootstrap', 'ngAnimate']
 //  angular.module('FAMApp', ['mwl.calendar', 'ui.bootstrap', 'ngAnimate']).controller('KitchenSinkCtrl', function(moment, alert, calendarConfig) {
@@ -50,15 +34,22 @@ app.controller("calendarCtrl", function($scope, user, alert, $location, moment, 
         alert.show('Deleted', args.calendarEvent);
       }
     }];
+
+     //vm.events = event.getallEvents();
+
+    // 2013-02-08 09:30  var day = moment("2018-08-08");
     vm.events = [
       {
         title: 'An event',
         color: calendarConfig.colorTypes.warning,
-        startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
+        // startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
+        startsAt: moment(new Date (2018,08,10,09,30)).toDate(),
+        // startsAt:  moment({ years:'2018', months:'8', date:'9', hours:'15', minutes:'10', seconds:'0', milliseconds:'0'}),
         endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
         draggable: true,
         resizable: true,
-        actions: actions
+        actions: actions,
+        allDay: true 
       }, {
         title: '<i class="glyphicon glyphicon-asterisk"></i> <span class="text-primary">Another event</span>, with a <i>html</i> title',
         color: calendarConfig.colorTypes.info,
@@ -66,7 +57,8 @@ app.controller("calendarCtrl", function($scope, user, alert, $location, moment, 
         endsAt: moment().add(5, 'days').toDate(),
         draggable: true,
         resizable: true,
-        actions: actions
+        actions: actions,
+        allDay: true 
       }, {
         title: 'This is a really long event title that occurs on every year',
         color: calendarConfig.colorTypes.important,
@@ -75,7 +67,8 @@ app.controller("calendarCtrl", function($scope, user, alert, $location, moment, 
         recursOn: 'year',
         draggable: true,
         resizable: true,
-        actions: actions
+        actions: actions,
+        allDay: true 
       }
     ];
 
@@ -133,6 +126,10 @@ app.controller("calendarCtrl", function($scope, user, alert, $location, moment, 
       }
 
     };
+
+    $scope.getActiveUser = function() {
+      return user.getActiveUserName();
+  }
 
   });
 

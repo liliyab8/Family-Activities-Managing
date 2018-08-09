@@ -1,6 +1,6 @@
 app.controller("mainCtrl", function ($scope, user, $location) {
 
-    $location.path("/main");
+    // $location.path("/main");
     $scope.usersCardsArray = [];
 
     $scope.displayusers = function () {
@@ -12,6 +12,10 @@ app.controller("mainCtrl", function ($scope, user, $location) {
         }, function () {
             //    $scope.invalidLogin = true;
         })
+    }
+
+    $scope.getActiveUser = function() {
+        return user.getActiveUserName();
     }
 
     // if (!user.isLoggedIn()) {

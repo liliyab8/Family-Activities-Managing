@@ -33,4 +33,8 @@ app.config(function($routeProvider) {
         templateUrl: "app/event/createEvent.html",
         controller: "createEventCtrl"
     })
+    .when("/user", {
+        templateUrl: "app/userPage/userPage.html",
+        controller: "userPageCtrl"
+    })
 });

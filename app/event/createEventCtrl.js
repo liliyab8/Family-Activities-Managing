@@ -1,13 +1,14 @@
-app.controller("createEventCtrl", function($scope, user, $location) {
-    
-    
-    $scope.login = function() {
-        $scope.invalidLogin = false;
-        user.login($scope.email, $scope.password).then(function(activeUser){
-            $scope.activeUser = activeUser;
-            $location.path("/main");
-        }, function() {
-            $scope.invalidLogin = true;
-        })
+app.controller("createEventCtrl", function ($scope, user, event, $location) {
+
+    $scope.createEvent = function (title, startsAt, endsAt, allDay) {
+        event.createEvent(title, startsAt, endsAt, allDay);
+    }
+
+    $scope.getUserEvents = function () {
+        return event.getUserEvents();
+    }
+
+    $scope.getallEvents = function () {
+        return event.getallEvents();
     }
 })

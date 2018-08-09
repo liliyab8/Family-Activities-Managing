@@ -1,9 +1,12 @@
-<fam-navbar></fam-navbar>
-<div class="jumbotron">
-    <div class="container">
-        <a href="#!/calendar" class="btn btn-primary">See the calendar</a> 
+<div>
+    <fam-navbar></fam-navbar>
+    <div class="jumbotron">
+        <div class="container">
+                <a href="#!/calendar" class="btn btn-warning sbutton">See the calendar</a>
+        </div>
     </div>
 </div>
+
 
 <div class="card-deck">
     <div class="container-fluid">
@@ -13,8 +16,8 @@
                     <img class="card-img-top" ng-src={{userCard.image.dataURL}}>
                     <div class="card-body">
                         <h5 class="card-title">{{userCard.first_name}} {{userCard.last_name}}</h5>
-                        <p class="card-text">bla bla</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text"></p>
+                        <a href="#!/user" class="btn btn-warning sbutton">Go to your page</a>
                     </div>
                 </div>
             </div>
