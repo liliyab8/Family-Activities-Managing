@@ -101,11 +101,11 @@ app.controller("calendarCtrl", function($scope, user, event, alert, $location, m
       alert.show('Dropped or resized', event);
     };
 
-    vm.toggle = function($event, field, event) {
-      $event.preventDefault();
-      $event.stopPropagation();
-      event[field] = !event[field];
-    };
+    // vm.toggle = function($event, field, event) {
+    //   $event.preventDefault();
+    //   $event.stopPropagation();
+    //   event[field] = !event[field];
+    // };
 
     vm.timespanClicked = function(date, cell) {
 

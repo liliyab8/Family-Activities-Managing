@@ -12,7 +12,7 @@ app.factory('event', function ($http, $q) {
         this.allDay = allDay;
     }
 
-    events = [];
+   // events = [];
     // events = [
     //     {
     //       title: 'An event',
