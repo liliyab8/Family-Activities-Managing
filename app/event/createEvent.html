@@ -1,10 +1,14 @@
 <div class="signup-body">
-  <!-- <div class="signup-container"> -->
-  <div class="signup-container w-50">
-    <!-- <form class="form-horizontal" action="/action_page.php"> -->
+    <fam-navbar></fam-navbar>
+
+    <div ng-show="isUserLoggedOut()">
+      <p>Please login :))</p>
+    </div>
+
+  <div class="signup-container w-50" ng-show="isUserLoggedIn()">
     <form class="form-horizontal" action="/html/tags/html_form_tag_action.cfm">
       <header class="heading"> Create a New Event Form</header>
-      <hr></hr>
+      <!-- <hr></hr> -->
       <div class="form-group row">
         <label class="col-3 col-form-label label">Event title:</label>
         <div class="col-6">
@@ -34,13 +38,13 @@
       </div>
 
       <div class="form-group row" ng-hide="isNotAllDayEvent()">
-          <label class="col-3 col-form-label label">Event Date:</label>
-          <div class="col-6">
-            <input type="date" name="event_date" id="event_date" class="form-control" ng-model="date">
-          </div>
+        <label class="col-3 col-form-label label">Event Date:</label>
+        <div class="col-6">
+          <input type="date" name="event_date" id="event_date" class="form-control" ng-model="date">
         </div>
+      </div>
 
-      <div class="form-group row" >
+      <div class="form-group row">
         <label class="col-3 col-form-label label">Event Comments:</label>
         <div class="col-6">
           <input type="text" name="comments" id="comments" class="form-control" ng-model="comments">
@@ -59,8 +63,7 @@
           <div class="btn btn-warning sbutton" ng-click="createEvent()">Submit</div>
         </div>
       </div>
+      <!-- </div> -->
+    </form>
   </div>
-  </form>
-
-</div>
 </div>

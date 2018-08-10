@@ -1,42 +1,47 @@
 <div class="user-card-body">
-
     <fam-navbar></fam-navbar>
 
-    <div class="signup-container w-50">
-        <!-- <form class="form-horizontal" action="/action_page.php"> -->
-        <form class="form-horizontal" action="/html/tags/html_form_tag_action.cfm">
-            <header class="heading"> Please select the action:</header>
-            <hr></hr>
-            <a href="#!/createEvent" class="btn btn-warning sbutton">Create a new event</a>
-            <a href="#!/calendar" class="btn btn-warning sbutton">Go to calendar</a>
-            <br>
-            <br>
+    <div ng-show="isUserLoggedOut()">
+        Please login :))
     </div>
 
-    <div class='md-padding' layout-xs="column" layout="row">
-        <div flex-xs="" layout="column">
-            <md-card style="width: 100%;" ng-repeat="userEvent in userEventsArray">
-                <md-card-title>
+    <div class="container" ng-show="isUserLoggedIn()">
 
-                    <md-card-title-text>
-                        <span class="md-headline">Event: {{userEvent.title}}</span>
-                        <span class="md-title">Created by: {{userEvent.userName}}</span>
-                    </md-card-title-text>
+        <div class="signup-container w-50">
+            <form class="form-horizontal" action="/html/tags/html_form_tag_action.cfm">
+                <header class="heading"> Please select the action:</header>
+                <!-- <hr></hr> -->
+                <a href="#!/createEvent" class="btn btn-warning sbutton">Create a new event</a>
+                <a href="#!/calendar" class="btn btn-warning sbutton">Go to calendar</a>
+            </form>
+            <br>
+        </div>
 
-                    <md-card-content>
-                        <p>Event starts: {{userEvent.startsAt.toDateString()}} {{userEvent.startsAt.getHours()}}:{{userEvent.startsAt.getMinutes()}}</p>
-                        <p>Event ends: {{userEvent.endsAt.toDateString()}} {{userEvent.endsAt.getHours()}}:{{userEvent.endsAt.getMinutes()}}</p>
-                    </md-card-content>
+        <div class='md-padding' layout-xs="column" layout="row">
+            <div flex-xs="" layout="column">
+                <md-card style="width: 100%;" ng-repeat="userEvent in userEventsArray">
+                    <md-card-title>
 
-                    <md-card-title-media>
-                        <div class="event-card-img">
-                            <img ng-src={{userEvent.image.dataURL}} style="width: 100px;" class="md-card-image " alt="Add Image">
-                        </div>
-                    </md-card-title-media>
+                        <md-card-title-text>
+                            <span class="md-headline">Event: {{userEvent.title}}</span>
+                            <span class="md-title">Created by: {{userEvent.userName}}</span>
+                        </md-card-title-text>
 
-                </md-card-title>
-                <span class="md-subhead">Comments: {{userEvent.comments}}</span>
-            </md-card>
+                        <md-card-content>
+                            <p>Event starts: {{userEvent.startsAt.toDateString()}} {{userEvent.startsAt.getHours()}}:{{userEvent.startsAt.getMinutes()}}</p>
+                            <p>Event ends: {{userEvent.endsAt.toDateString()}} {{userEvent.endsAt.getHours()}}:{{userEvent.endsAt.getMinutes()}}</p>
+                        </md-card-content>
+
+                        <md-card-title-media>
+                            <div class="event-card-img">
+                                <img ng-src={{userEvent.image.dataURL}} style="width: 100px;" class="md-card-image " alt="Add Image">
+                            </div>
+                        </md-card-title-media>
+
+                    </md-card-title>
+                    <span class="md-subhead">Comments: {{userEvent.comments}}</span>
+                </md-card>
+            </div>
         </div>
     </div>
 </div>

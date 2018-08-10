@@ -9,5 +9,4 @@ app.controller("userPageCtrl", function ($scope, event) {
     }
 
     $scope.getUserEvents();
-
 })
