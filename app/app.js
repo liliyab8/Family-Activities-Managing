@@ -1,4 +1,5 @@
-var app = angular.module("FAMApp", ["ngRoute", "imageupload", "mwl.calendar", "ui.bootstrap", "ngAnimate", "colorpicker.module"]);
+// var app = angular.module("FAMApp", ["ngRoute", "imageupload", "mwl.calendar", "ui.bootstrap", "ngAnimate", "colorpicker.module", 'ngMessages',"ngMaterial"]);
+var app = angular.module("FAMApp", ["ngRoute", "imageupload", "mwl.calendar", "ui.bootstrap", "ngAnimate", "colorpicker.module",'ngMaterial', 'ngAria']);
 
 app.config(function($routeProvider) {
     $routeProvider

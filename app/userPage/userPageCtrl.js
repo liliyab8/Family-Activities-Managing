@@ -1,4 +1,4 @@
-app.controller("userPageCtrl", function ($scope, event, user, $location) {
+app.controller("userPageCtrl", function ($scope, event) {
 
     $scope.userEventsArray = [];
 

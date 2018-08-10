@@ -30,3 +30,7 @@
 .calendar {
     margin: 10vw;
 }
+
+.nav-link{
+    text-decoration: underline;
+}

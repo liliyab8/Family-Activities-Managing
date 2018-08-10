@@ -1,29 +1,42 @@
-<div>
+<div class="user-card-body">
+
     <fam-navbar></fam-navbar>
-    
-        <div class="container">
-                <a href="#!/createEvent" class="btn btn-warning sbutton">Create a new event</a>
-        </div>
 
-        <div class="card-deck">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6 col-lg-3" ng-repeat="userEvent in userEventsArray">
-                            <div class="card">
-                                <img class="card-img-top" ng-src={{userEvent.image.dataURL}}>
-                                <div class="card-body">
-                                    <h5 class="card-title">Created by: {{userEvent.userName}}</h5>
-                                    <p class="card-text">Event: {{userEvent.title}}</p>
-                                    <p class="card-text">Event starts: {{userEvent.startsAt.toDateString()}} {{userEvent.startsAt.getHours()}}:{{userEvent.startsAt.getMinutes()}}</p>
-                                    <p class="card-text">Event ends: {{userEvent.endsAt.toDateString()}} {{userEvent.endsAt.getHours()}}:{{userEvent.endsAt.getMinutes()}}</p>
-                                    <p class="card-text">Comments: {{userEvent.comments}}</p>
-                                </div>
-                            </div>
+    <div class="signup-container w-50">
+        <!-- <form class="form-horizontal" action="/action_page.php"> -->
+        <form class="form-horizontal" action="/html/tags/html_form_tag_action.cfm">
+            <header class="heading"> Please select the action:</header>
+            <hr></hr>
+            <a href="#!/createEvent" class="btn btn-warning sbutton">Create a new event</a>
+            <a href="#!/calendar" class="btn btn-warning sbutton">Go to calendar</a>
+            <br>
+            <br>
+    </div>
+
+    <div class='md-padding' layout-xs="column" layout="row">
+        <div flex-xs="" layout="column">
+            <md-card style="width: 100%;" ng-repeat="userEvent in userEventsArray">
+                <md-card-title>
+
+                    <md-card-title-text>
+                        <span class="md-headline">Event: {{userEvent.title}}</span>
+                        <span class="md-title">Created by: {{userEvent.userName}}</span>
+                    </md-card-title-text>
+
+                    <md-card-content>
+                        <p>Event starts: {{userEvent.startsAt.toDateString()}} {{userEvent.startsAt.getHours()}}:{{userEvent.startsAt.getMinutes()}}</p>
+                        <p>Event ends: {{userEvent.endsAt.toDateString()}} {{userEvent.endsAt.getHours()}}:{{userEvent.endsAt.getMinutes()}}</p>
+                    </md-card-content>
+
+                    <md-card-title-media>
+                        <div class="event-card-img">
+                            <img ng-src={{userEvent.image.dataURL}} style="width: 100px;" class="md-card-image " alt="Add Image">
                         </div>
-                    </div>       
-                </div>
-            </div>
-           
+                    </md-card-title-media>
 
+                </md-card-title>
+                <span class="md-subhead">Comments: {{userEvent.comments}}</span>
+            </md-card>
+        </div>
+    </div>
 </div>
-
