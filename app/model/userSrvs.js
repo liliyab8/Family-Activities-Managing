@@ -4,13 +4,13 @@ app.factory('user', function ($http, $q) {
 
     usersCardsArray = [];
 
-    function User(plainUser) {
-        this.first_name = plainUser.first_name;
-        this.last_name = plainUser.last_name;
-        this.email = plainUser.email;
-        this.password = plainUser.password;
-        this.image = plainUser.image;
-    }
+    // function User(plainUser) {
+    //     this.first_name = plainUser.first_name;
+    //     this.last_name = plainUser.last_name;
+    //     this.email = plainUser.email;
+    //     this.password = plainUser.password;
+    //     this.image = plainUser.image;
+    // }
 
     function User(first_name, last_name, email, password) {
         this.first_name = first_name;

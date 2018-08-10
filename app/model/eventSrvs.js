@@ -26,7 +26,6 @@ app.factory('event', function ($http, $q, $location, user) {
         }
       }];
 
-    //events = [];
     events = [
         {
           title: 'The First Event',

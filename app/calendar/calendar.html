@@ -3,12 +3,14 @@
     <div class="jumbotron">
         <div class="container">
             <h1 class="text-center">Family Calendar</h1>
+            <div ng-show="isUserLoggedOut()" class="text-center">
+                <p> Please login in order to see the family calendar :))</p>
+            </div>
         </div>
-    </div>    
+    </div>
 </div>
 
-<div ng-controller="calendarCtrl as vm" class="calendar">
-        <!-- <div> -->
+<div ng-controller="calendarCtrl as vm" class="calendar" ng-show="isUserLoggedIn()">
     <h2 class="text-center">{{ vm.calendarTitle }}</h2>
 
     <div class="row">
@@ -120,5 +122,3 @@
 
     </table>
 </div>
-<!-- </body> -->
-<!-- </html> -->

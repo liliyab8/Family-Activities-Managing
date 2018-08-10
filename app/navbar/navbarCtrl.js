@@ -4,6 +4,13 @@ app.controller("navbarCtrl", function($scope, user, $location) {
         return user.isLoggedIn();
     }
 
+    $scope.isUserLoggedOut = function() {
+        if(user.isLoggedIn())
+        {return false;}
+        else
+        {return true;}
+    }
+
     $scope.logout = function() {
         user.logout();
         $location.path("/");
