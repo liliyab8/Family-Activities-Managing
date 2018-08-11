@@ -100,10 +100,23 @@ app.factory('event', function ($http, $q, $location, user) {
               });
     }
 
+    function deleteUserEvents(userEventsArray, userEvent){
+        //remove event from user events array
+        var userEventIndex = userEventsArray.indexOf(userEvent);
+        userEventsArray.splice(userEventIndex, 1);  
+
+        //remove event from all events array
+        userEventIndex = events.indexOf(userEvent);
+        events.splice(userEventIndex, 1);  
+
+        return userEventsArray;      
+    }
+
     return {
         getallEvents: getallEvents,
         getUserEvents: getUserEvents,
         createEvent: createEvent,
-        createEmptyEvent: createEmptyEvent
+        createEmptyEvent: createEmptyEvent,
+        deleteUserEvents: deleteUserEvents
     }
 })
