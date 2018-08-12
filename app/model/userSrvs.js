@@ -25,7 +25,7 @@ app.factory('user', function ($http, $q) {
     }
 
     function itIsUserCard() {
-        return userMainCard==activeUser.first_name;
+        return activeUser && userMainCard==activeUser.first_name;
     }
 
     function isLoggedIn() {

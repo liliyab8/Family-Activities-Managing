@@ -58,15 +58,17 @@ app.factory('event', function ($http, $q, $location, user) {
     function getUserEvents() {
 
         var userEventsArray = [];
-
+        if(  user.getActiveUserName()){
         var userName = user.getActiveUserName().first_name;
-
+        
         events.forEach(event => {
             if (event.userName == userName) {
                 userEventsArray.push(event);
             }
         })
         return userEventsArray;
+        }
+        return false;
     }
 
     function createEvent(title, startsAt, endsAt, allDay, date, comments, image) {
