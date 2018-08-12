@@ -18,6 +18,15 @@
     overflow:auto;    
 }
 
+.calendar-body{
+    background-image:url(https://thumbs.dreamstime.com/b/close-up-th-july-transparent-calendar-page-blurred-sky-sunset-background-independence-day-american-national-concept-115569032.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    width:100%;
+    height:100vh;
+    overflow:auto;    
+}
+
 .user-card-body{
     background-image:url(https://cdn.24.co.za/files/Cms/General/d/7564/681e4350b08049d9856a17be839f4f30.jpg);    background-repeat:no-repeat;
     background-repeat:no-repeat;
@@ -45,6 +54,7 @@
     text-decoration:bold;
     text-align : center;
     font-size:30px;
-    color:#F96;
+    /* color:#F96; */
+    color: #eea236;
     padding-top:10px;
 }

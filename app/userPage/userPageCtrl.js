@@ -1,10 +1,13 @@
-app.controller("userPageCtrl", function ($scope, event) {
+app.controller("userPageCtrl", function ($scope, event, user) {
 
     $scope.userEventsArray = [];
 
+    $scope.itIsUserCard = function () {
+       return user.itIsUserCard();
+    }
+
     $scope.getUserEvents = function () {
         $scope.userEventsArray = ($scope.userEventsArray).slice(0, 0);
-
         $scope.userEventsArray = event.getUserEvents();
     }
 

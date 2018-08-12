@@ -1,16 +1,8 @@
 app.factory('user', function ($http, $q) {
 
-    var activeUser = null;
-
-    usersCardsArray = [];
-
-    // function User(plainUser) {
-    //     this.first_name = plainUser.first_name;
-    //     this.last_name = plainUser.last_name;
-    //     this.email = plainUser.email;
-    //     this.password = plainUser.password;
-    //     this.image = plainUser.image;
-    // }
+    var activeUser = null;    
+    usersCardsArray = []; 
+    userMainCard = null; 
 
     function User(first_name, last_name, email, password) {
         this.first_name = first_name;
@@ -25,6 +17,15 @@ app.factory('user', function ($http, $q) {
         this.email = email;
         this.password = password;
         this.image = image;
+    }    
+
+    function updateUserCardName(userCard) {
+        userMainCard = null;
+        userMainCard = userCard;
+    }
+
+    function itIsUserCard() {
+        return userMainCard==activeUser.first_name;
     }
 
     function isLoggedIn() {
@@ -93,6 +94,8 @@ app.factory('user', function ($http, $q) {
         logout: logout,
         signUp: signUp,
         displayUsers: displayUsers,
-        getActiveUserName: getActiveUserName
+        getActiveUserName: getActiveUserName,
+        updateUserCardName: updateUserCardName,
+        itIsUserCard: itIsUserCard
     }
 }) 

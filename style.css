@@ -28,9 +28,15 @@
 }
 
 .calendar {
-    margin: 10vw;
+    /* margin: 10vw; */
+
+    /* margin-top: 100px; */
+    /* margin-bottom: 100px; */
+    margin-right: 5vw;
+    margin-left: 5vw;
 }
 
 .nav-link{
     text-decoration: underline;
 }
+

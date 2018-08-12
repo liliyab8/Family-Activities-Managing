@@ -1,5 +1,5 @@
 app.factory('event', function ($http, $q, $location, user) {
-    
+
     function Event(userName, title, color, startsAt, endsAt, draggable, resizable, actions, allDay, comments, image) {
         this.userName = userName;
         this.title = title,
@@ -16,56 +16,57 @@ app.factory('event', function ($http, $q, $location, user) {
 
     var actions = [{
         label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
-        onClick: function(args) {
-          alert.show('Edited', args.calendarEvent);
+        onClick: function (args) {
+            alert.show('Edited', args.calendarEvent);
         }
-      }, {
+    }, {
         label: '<i class=\'glyphicon glyphicon-remove\'></i>',
-        onClick: function(args) {
-          alert.show('Deleted', args.calendarEvent);
+        onClick: function (args) {
+            alert.show('Deleted', args.calendarEvent);
         }
-      }];
+    }];
 
     events = [
         {
-          title: 'The First Event',
-          color: "orange",          
-          startsAt: moment(new Date (2018,07,10,09,30)).toDate(),
-          endsAt: moment(new Date (2018,07,10,10,15)).toDate(),
-          draggable: true,
-          resizable: true,
-          actions: actions,
-          allDay: true 
-        },
-        {
-            title: 'The Second Event',
-            color: "orange",          
-            startsAt: moment(new Date (2018,07,12,13,30)).toDate(),
-            endsAt: moment(new Date (2018,07-1,12,14,00)).toDate(),
+            userName: "Liliya",
+            title: 'The First Event',
+            color: "orange",
+            startsAt: moment(new Date(2018, 07, 10, 09, 30)).toDate(),
+            endsAt: moment(new Date(2018, 07, 10, 10, 15)).toDate(),
             draggable: true,
             resizable: true,
             actions: actions,
-            allDay: true 
-          }
-      ];
+            allDay: true
+        },
+        {
+            userName: "Sergey",
+            title: 'The Second Event',
+            color: "orange",
+            startsAt: moment(new Date(2018, 07, 12, 13, 30)).toDate(),
+            endsAt: moment(new Date(2018, 07 - 1, 12, 14, 00)).toDate(),
+            draggable: true,
+            resizable: true,
+            actions: actions,
+            allDay: true
+        }
+    ];
 
-    function getallEvents(){
+    function getallEvents() {
         return events;
     }
 
-    function getUserEvents(){
+    function getUserEvents() {
 
-        var userEventsArray= [];
+        var userEventsArray = [];
 
-        var userName =user.getActiveUserName().first_name; 
+        var userName = user.getActiveUserName().first_name;
 
-        events.forEach(event => {    
-            if(event.userName == userName)
-            {
+        events.forEach(event => {
+            if (event.userName == userName) {
                 userEventsArray.push(event);
             }
         })
-            return userEventsArray;
+        return userEventsArray;
     }
 
     function createEvent(title, startsAt, endsAt, allDay, date, comments, image) {
@@ -75,10 +76,10 @@ app.factory('event', function ($http, $q, $location, user) {
         var resizable = true;
         var actions = actions;
 
-        var userName =user.getActiveUserName().first_name; 
+        var userName = user.getActiveUserName().first_name;
 
-        if(allDay){
-            
+        if (allDay) {
+
             startsAt = moment(new Date(date)).startOf('day').toDate();
             endsAt = moment(new Date(date)).endOf('day').toDate();
         }
@@ -91,25 +92,25 @@ app.factory('event', function ($http, $q, $location, user) {
 
     function createEmptyEvent() {
         events.push({
-                title: 'New event',
-                startsAt: moment().toDate(),
-                endsAt: moment().toDate(),
-                color: "orange",
-                draggable: true,
-                resizable: true
-              });
+            title: 'New event',
+            startsAt: moment().toDate(),
+            endsAt: moment().toDate(),
+            color: "orange",
+            draggable: true,
+            resizable: true
+        });
     }
 
-    function deleteUserEvents(userEventsArray, userEvent){
+    function deleteUserEvents(userEventsArray, userEvent) {
         //remove event from user events array
         var userEventIndex = userEventsArray.indexOf(userEvent);
-        userEventsArray.splice(userEventIndex, 1);  
+        userEventsArray.splice(userEventIndex, 1);
 
         //remove event from all events array
         userEventIndex = events.indexOf(userEvent);
-        events.splice(userEventIndex, 1);  
+        events.splice(userEventIndex, 1);
 
-        return userEventsArray;      
+        return userEventsArray;
     }
 
     return {

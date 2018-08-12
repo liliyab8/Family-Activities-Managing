@@ -1,16 +1,14 @@
-app.controller("mainCtrl", function ($scope, user, $location) {
-
-    // $location.path("/main");
+app.controller("mainCtrl", function ($scope, user) {
+    
     $scope.usersCardsArray = [];
+    $scope.userMainCard = null;
 
     $scope.displayusers = function () {
-        // $scope.invalidLogin = false;
         $scope.usersCardsArray = ($scope.usersCardsArray).slice(0, 0);
 
         user.displayUsers().then(function (usersCardsArray) {
             $scope.usersCardsArray = usersCardsArray;
         }, function () {
-            //    $scope.invalidLogin = true;
         })
     }
 
@@ -18,14 +16,9 @@ app.controller("mainCtrl", function ($scope, user, $location) {
         return user.getActiveUserName();
     }
 
-    // if (!user.isLoggedIn()) {
-    //     $location.path("/");
-    //     return;
-    // }
-    // else {
-    //     $location.path("/NewAppUser");
-    //     return;
-    // }
-
+    $scope.updateUserCardName = function(userMainCardNamr){
+        user.updateUserCardName(userMainCardNamr);
+    }
+    
     $scope.displayusers();
 })
