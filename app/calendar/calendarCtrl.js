@@ -61,9 +61,5 @@ app.controller("calendarCtrl", function ($scope, user, event, alert, $location, 
       }
     }
   };
-
-  // $scope.getActiveUser = function () {
-  //   return user.getActiveUserName();
-  // }
 });
 
