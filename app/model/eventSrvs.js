@@ -20,7 +20,7 @@ app.factory('event', function ($location, user, moment) {
         else {
             this.userName = arguments[0];
             this.title = arguments[1],
-                this.color = arguments[2];
+            this.color = arguments[2];
             this.startsAt = arguments[3];
             this.endsAt = arguments[4];
             this.draggable = arguments[5];
@@ -54,7 +54,9 @@ app.factory('event', function ($location, user, moment) {
             draggable: true,
             resizable: true,
             actions: actions,
-            allDay: true
+            allDay: true,
+            comments: "",
+            image: ""
         },
         {
             userName: "Sergey",
@@ -65,7 +67,9 @@ app.factory('event', function ($location, user, moment) {
             draggable: true,
             resizable: true,
             actions: actions,
-            allDay: true
+            allDay: true,
+            comments: "",
+            image: ""
         },
         {
             userName: "Sergey",
@@ -76,7 +80,9 @@ app.factory('event', function ($location, user, moment) {
             draggable: true,
             resizable: true,
             actions: actions,
-            allDay: true
+            allDay: true,
+            comments: "",
+            image: ""
         },
         {
             userName: "Mila",
@@ -87,7 +93,9 @@ app.factory('event', function ($location, user, moment) {
             draggable: true,
             resizable: true,
             actions: actions,
-            allDay: true
+            allDay: true,
+            comments: "",
+            image: ""
         }
     ];
 
@@ -190,6 +198,13 @@ app.factory('event', function ($location, user, moment) {
     }
 
     function editUserEvents(userEvent) {
+
+        if (userEvent.allDay) {
+
+            userEvent.startsAt = moment(new Date(userEvent.date)).startOf('day').toDate();
+            userEvent.endsAt = moment(new Date(userEvent.date)).endOf('day').toDate();
+        }
+
         const now = moment().startOf('day').toDate();
 
         if ((userEvent.startsAt && userEvent.startsAt > now
@@ -197,12 +212,12 @@ app.factory('event', function ($location, user, moment) {
             && userEvent.startsAt < userEvent.endsAt)
             || (userEvent.date && userEvent.date > now)) {
 
-            events.forEach(event => {
-                if (event == tempUserEvent) {
-                    event = userEvent;
-                }
+            // events.forEach(event => {
+            //     if (event == tempUserEvent) {
+            //         event = userEvent;
+            //     }
                 $location.path("/user");
-            })
+            // })
             return events;
 
         } else {
