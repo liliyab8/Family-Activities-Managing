@@ -1,19 +1,37 @@
 app.factory('event', function ($location, user, moment) {
 
-    function Event(userName, title, color, startsAt, endsAt, draggable, resizable, actions, allDay, comments, image) {
-        this.userName = userName;
-        this.title = title,
-        this.color = color;
-        this.startsAt = startsAt;
-        this.endsAt = endsAt;
-        this.draggable = draggable;
-        this.resizable = resizable;
-        this.actions = actions;
-        this.allDay = allDay;
-        this.comments = comments;
-        this.image = image;
-    }
+    function Event() {
+        if (arguments.length === 0) {
 
+        } else if (arguments.length === 1) {
+
+            this.userName = arguments[0].userName;
+            this.title = arguments[0].title,
+            this.color = arguments[0].color;
+            this.startsAt = arguments[0].startsAt;
+            this.endsAt = arguments[0].endsAt;
+            this.draggable = arguments[0].draggable;
+            this.resizable = arguments[0].resizable;
+            this.actions = arguments[0].actions;
+            this.allDay = arguments[0].allDay;
+            this.comments = arguments[0].comments;
+            this.image = arguments[0].image;
+        }
+        else {
+            this.userName = arguments[0];
+            this.title = arguments[1],
+            this.color = arguments[2];
+            this.startsAt = arguments[3];
+            this.endsAt = arguments[4];
+            this.draggable = arguments[5];
+            this.resizable = arguments[6];
+            this.actions = arguments[7];
+            this.allDay = arguments[8];
+            this.comments = arguments[9];
+            this.image = arguments[10];
+        }
+    }
+    
     var actions = [{
         label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
         onClick: function (args) {
@@ -31,8 +49,8 @@ app.factory('event', function ($location, user, moment) {
             userName: "Liliya",
             title: 'The First Event',
             color: "orange",
-            startsAt: moment(new Date(2018, 07, 10, 09, 30)).toDate(),
-            endsAt: moment(new Date(2018, 07, 10, 10, 15)).toDate(),
+            startsAt: moment(new Date(2018, 07, 15, 09, 30)).toDate(),
+            endsAt: moment(new Date(2018, 07, 15, 10, 15)).toDate(),
             draggable: true,
             resizable: true,
             actions: actions,
@@ -112,7 +130,7 @@ app.factory('event', function ($location, user, moment) {
             var color = "orange";
             var draggable = true;
             var resizable = true;
-            var actions = actions;
+            var tempActions = actions;
 
             var userName = user.getActiveUserName().first_name;
 
@@ -122,7 +140,7 @@ app.factory('event', function ($location, user, moment) {
                 endsAt = moment(new Date(date)).endOf('day').toDate();
             }
 
-            var newEvent = new Event(userName, title, color, startsAt, endsAt, draggable, resizable, actions, allDay, comments, image);
+            var newEvent = new Event(userName, title, color, startsAt, endsAt, draggable, resizable, tempActions, allDay, comments, image);
             events.push(newEvent);
             $location.path("/user");
             return newEvent;
@@ -135,13 +153,17 @@ app.factory('event', function ($location, user, moment) {
 
     function createEmptyEvent() {
         events.push({
-            userName: user.getActiveUserName().first_name,
-            title: 'New event',
+            userName: user.getActiveUserName().first_name, 
+            title: "New Event",
+            color: "orange",
             startsAt: moment().toDate(),
             endsAt: moment().toDate(),
-            color: "orange",
             draggable: true,
-            resizable: true
+            resizable: true,
+            actions: actions,
+            allDay: "",
+            comments: "",
+            image: "" 
         });
     }
 
@@ -156,14 +178,41 @@ app.factory('event', function ($location, user, moment) {
 
         return userEventsArray;
     }
+    var tempUserEvent = null;
 
+    function getEventForEdit() {
+        return tempUserEvent;
+    }
 
+    function setEventForEdit(userEvent) {
+        tempUserEvent = userEvent;
+        $location.path("/editEvent");
+    }
+
+    function editUserEvents(userEvent) {
+        events.forEach(event => {
+            if (event == tempUserEvent) {
+                event = userEvent;
+            }
+            $location.path("/user");
+        })
+
+        // var userEventIndex = userEventsArray.indexOf(userEvent);
+        // userEventsArray.splice(userEventIndex, 1);        
+        // userEventIndex = events.indexOf(userEvent);
+        // events.splice(userEventIndex, 1);
+
+        return userEventsArray;
+    }
 
     return {
         getallEvents: getallEvents,
         getUserEvents: getUserEvents,
         createEvent: createEvent,
         createEmptyEvent: createEmptyEvent,
-        deleteUserEvents: deleteUserEvents
+        deleteUserEvents: deleteUserEvents,
+        editUserEvents: editUserEvents,
+        getEventForEdit: getEventForEdit,
+        setEventForEdit: setEventForEdit
     }
 })

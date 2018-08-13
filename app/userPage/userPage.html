@@ -42,6 +42,8 @@
                     <div class="signup-container">
                         <form class="form-horizontal" action="/html/tags/html_form_tag_action.cfm">
                             <div class="btn btn-warning sbutton" ng-show="itIsUserCard()" ng-click="deleteUserEvent(userEvent)">Delete</div>
+                            <!-- <div class="btn btn-warning sbutton" ng-show="itIsUserCard()" ng-click="editUserEvent(userEvent)">Edit</div> -->
+                            <a href="#!/editEvent" class="btn btn-warning sbutton" ng-click="editUserEvent(userEvent)">Edit</a>
                         </form>
                     </div>
                 </md-card>

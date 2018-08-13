@@ -1,0 +1,70 @@
+<div class="signup-body">
+        <fam-navbar></fam-navbar>
+    
+        <div ng-show="isUserLoggedOut()">
+          <p>Please login :))</p>
+        </div>
+    
+      <div class="signup-container w-50" ng-show="isUserLoggedIn()">
+        <form class="form-horizontal" action="/html/tags/html_form_tag_action.cfm">
+        
+          <header class="heading"> Edit the Event </header>
+          <!-- <hr></hr> -->
+          <div class="form-group row">
+            <label class="col-3 col-form-label label">Event title:</label>
+            <div class="col-6">
+              <input type="text" name="event_title" id="event_title" placeholder="Enter Event Title" class="form-control" ng-model="tempEvent.title">
+            </div>
+          </div>
+    
+          <div class="form-group row" action="/action_page.php" method="get">
+            <label class="col-3 col-form-label label">All Day Event:</label>
+            <div class="col-1">
+              <input type="checkbox" name="all-day-event" id="all-day-event" class="form-control" ng-model="tempEvent.allDay">
+            </div>
+          </div>
+    
+          <div class="form-group row" ng-hide="isAllDayEvent()">
+            <label class="col-3 col-form-label label">Event Start Date:</label>
+            <div class="col-6">
+              <input type="datetime-local" name="event_start_date" id="event_Startdate" class="form-control" ng-model="tempEvent.startsAt">
+            </div>
+          </div>
+    
+          <div class="form-group row" ng-hide="isAllDayEvent()">
+            <label class="col-3 col-form-label label">Event End Date:</label>
+            <div class="col-6">
+              <input type="datetime-local" name="event_end_date" id="event_end_date" class="form-control" ng-model="tempEvent.endsAt">
+            </div>
+          </div>
+    
+          <div class="form-group row" ng-hide="isNotAllDayEvent()">
+            <label class="col-3 col-form-label label">Event Date:</label>
+            <div class="col-6">
+              <input type="date" name="event_date" id="event_date" class="form-control" ng-model="tempEvent.date">
+            </div>
+          </div>
+    
+          <div class="form-group row">
+            <label class="col-3 col-form-label label">Event Comments:</label>
+            <div class="col-6">
+              <input type="text" name="comments" id="comments" class="form-control" ng-model="tempEvent.comments">
+            </div>
+          </div>
+    
+          <div class="form-group row">
+            <label for="image" class="col-3 col-form-label label">Event Image Url</label>
+            <div class="col-6">
+              <input type="file" accept="image/*" image="image" id="image" ng-model="tempEvent.image"/>
+            </div>
+          </div>
+    
+          <div class="form-group row">
+            <div class="offset-1 col-9">
+              <div class="btn btn-warning sbutton" ng-click="editUserEvent()">Submit</div>
+            </div>
+          </div>
+          <!-- </div> -->
+        </form>
+      </div>
+    </div>

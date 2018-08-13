@@ -38,4 +38,8 @@ app.config(function($routeProvider) {
         templateUrl: "app/userPage/userPage.html",
         controller: "userPageCtrl"
     })
+    .when("/editEvent", {
+        templateUrl: "app/event/editEvent.html",
+        controller: "editEventCtrl"
+    })
 });
