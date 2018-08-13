@@ -5,18 +5,17 @@
         Please login :))
     </div>
 
-    <div class="container" ng-show="isUserLoggedIn()">
+    <div class="signup-container w-50">
+        <form class="form-horizontal" action="/html/tags/html_form_tag_action.cfm">
+            <header class="heading"> Please select the action:</header>
+            <!-- <hr></hr> -->
+            <a href="#!/createEvent" class="btn btn-warning sbutton" ng-show="itIsUserCard()">Create a new event</a>
+            <a href="#!/calendar" class="btn btn-warning sbutton">Go to calendar</a>
+        </form>
+        <br>
+    </div>
 
-        <div class="signup-container w-50">
-            <form class="form-horizontal" action="/html/tags/html_form_tag_action.cfm">
-                <header class="heading"> Please select the action:</header>
-                <!-- <hr></hr> -->
-                <a href="#!/createEvent" class="btn btn-warning sbutton" ng-show ="itIsUserCard()">Create a new event</a>
-                <a href="#!/calendar" class="btn btn-warning sbutton">Go to calendar</a>
-            </form>
-            <br>
-        </div>
-
+    <div class="container" ng-show="isUserLoggedIn()" style="opacity: 0.7">
         <div class='md-padding' layout-xs="column" layout="row">
             <div flex-xs="" layout="column">
                 <md-card style="width: 100%;" ng-repeat="userEvent in userEventsArray">
@@ -40,7 +39,11 @@
 
                     </md-card-title>
                     <span class="md-subhead">Comments: {{userEvent.comments}}</span>
-                    <div class="btn btn-warning sbutton" ng-show ="itIsUserCard()" ng-click="deleteUserEvent(userEvent)">Delete</div>
+                    <div class="signup-container">
+                        <form class="form-horizontal" action="/html/tags/html_form_tag_action.cfm">
+                            <div class="btn btn-warning sbutton" ng-show="itIsUserCard()" ng-click="deleteUserEvent(userEvent)">Delete</div>
+                        </form>
+                    </div>
                 </md-card>
             </div>
         </div>

@@ -1,30 +1,60 @@
-<div>
+<div class="main-body">
+
     <fam-navbar></fam-navbar>
 
     <div ng-show="isUserLoggedOut()">
-            Please login :))
-    </div> 
+        Please login :))
+    </div>
 
-    <div class="jumbotron" ng-show="isUserLoggedIn()">
-        <div class="container">
-                <a href="#!/calendar" class="btn btn-warning sbutton">See the calendar</a>
+    <div class="signup-container w-50">
+        <form class="form-horizontal" action="/html/tags/html_form_tag_action.cfm">
+            <header class="heading"> Please select the action:</header>
+            <a href="#!/calendar" class="btn btn-warning sbutton">See the calendar</a>
+        </form>
+        <br>
+    </div>
+
+    <div class='md-padding' layout-xs="column" layout="row" ng-show="isUserLoggedIn()" style="opacity: 0.7">
+        <div flex-xs="" layout="column">
+            <md-card style="width: 100%;" ng-repeat="userEvent in usersEventsArray | orderBy: 'startsAt' | limitTo: 3 ">
+                <md-card-title>
+
+                    <md-card-title-text>
+                        <span class="md-headline">Event: {{userEvent.title}}</span>
+                        <span class="md-title">Created by: {{userEvent.userName}}</span>
+                    </md-card-title-text>
+
+                    <md-card-content>
+                        <p>Event starts: {{userEvent.startsAt.toDateString()}} {{userEvent.startsAt.getHours()}}:{{userEvent.startsAt.getMinutes()}}</p>
+                        <p>Event ends: {{userEvent.endsAt.toDateString()}} {{userEvent.endsAt.getHours()}}:{{userEvent.endsAt.getMinutes()}}</p>
+                    </md-card-content>
+
+                    <md-card-title-media>
+                        <div class="event-card-img">
+                            <img ng-src={{userEvent.image.dataURL}} style="width: 100px;" class="md-card-image " alt="Add Image">
+                        </div>
+                    </md-card-title-media>
+
+                </md-card-title>
+                <span class="md-subhead">Comments: {{userEvent.comments}}</span>
+            </md-card>
         </div>
     </div>
-</div>
 
-<div class="card-deck" ng-show="isUserLoggedIn()">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-6 col-lg-3" ng-repeat="userCard in usersCardsArray">
-                <div class="card">
-                    <img class="card-img-top" ng-src={{userCard.image.dataURL}}>
-                    <div class="card-body">
-                        <h5 class="card-title">{{userCard.first_name}} {{userCard.last_name}}</h5>
-                        <p class="card-text"></p>
-                        <a href="#!/user" class="btn btn-warning sbutton" ng-click="updateUserCardName(userCard.first_name)">Go to your page</a>
+    <div class="card-deck" ng-show="isUserLoggedIn()">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 col-lg-3" ng-repeat="userCard in usersCardsArray">
+                    <div class="card">
+                        <img class="card-img-top" ng-src={{userCard.image.dataURL}}>
+                        <div class="card-body">
+                            <h5 class="card-title">{{userCard.first_name}} {{userCard.last_name}}</h5>
+                            <p class="card-text"></p>
+                            <a href="#!/user" class="btn btn-warning sbutton" ng-click="updateUserCardName(userCard.first_name)">Go to your page</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>       
+        </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-app.factory('event', function ($http, $q, $location, user) {
+app.factory('event', function ($location, user, moment) {
 
     function Event(userName, title, color, startsAt, endsAt, draggable, resizable, actions, allDay, comments, image) {
         this.userName = userName;
@@ -43,7 +43,29 @@ app.factory('event', function ($http, $q, $location, user) {
             title: 'The Second Event',
             color: "orange",
             startsAt: moment(new Date(2018, 07, 12, 13, 30)).toDate(),
-            endsAt: moment(new Date(2018, 07 - 1, 12, 14, 00)).toDate(),
+            endsAt: moment(new Date(2018, 07, 12, 14, 00)).toDate(),
+            draggable: true,
+            resizable: true,
+            actions: actions,
+            allDay: true
+        },
+        {
+            userName: "Sergey",
+            title: 'The Second Event',
+            color: "orange",
+            startsAt: moment(new Date(2018, 07, 14, 13, 30)).toDate(),
+            endsAt: moment(new Date(2018, 07, 14, 14, 00)).toDate(),
+            draggable: true,
+            resizable: true,
+            actions: actions,
+            allDay: true
+        },
+        {
+            userName: "Mila",
+            title: 'The Second Event',
+            color: "orange",
+            startsAt: moment(new Date(2018, 07, 18, 13, 30)).toDate(),
+            endsAt: moment(new Date(2018, 07, 18, 14, 00)).toDate(),
             draggable: true,
             resizable: true,
             actions: actions,
@@ -52,48 +74,68 @@ app.factory('event', function ($http, $q, $location, user) {
     ];
 
     function getallEvents() {
+        const now = moment().startOf('day').toDate();
+        events.forEach(event => {
+            if (event.startsAt < now) {
+                var eventIndex = events.indexOf(event);
+                events.splice(eventIndex, 1);
+            }
+        })
         return events;
     }
 
     function getUserEvents() {
-
+        events = getallEvents();
         var userEventsArray = [];
-        if(  user.getActiveUserName()){
-        var userName = user.getActiveUserName().first_name;
-        
-        events.forEach(event => {
-            if (event.userName == userName) {
-                userEventsArray.push(event);
-            }
-        })
-        return userEventsArray;
+        if (user.getActiveUserName()) {
+            var userName = user.getActiveUserName().first_name;
+
+            events.forEach(event => {
+                if (event.userName == userName) {
+                    userEventsArray.push(event);
+                }
+            })
+            return userEventsArray;
         }
         return false;
     }
 
     function createEvent(title, startsAt, endsAt, allDay, date, comments, image) {
 
-        var color = "orange";
-        var draggable = true;
-        var resizable = true;
-        var actions = actions;
+        const now = moment().startOf('day').toDate();
 
-        var userName = user.getActiveUserName().first_name;
+        if ((startsAt && startsAt > now
+            && endsAt && endsAt > now
+            && startsAt < endsAt)
+            || (date && date > now)) {
 
-        if (allDay) {
+            var color = "orange";
+            var draggable = true;
+            var resizable = true;
+            var actions = actions;
 
-            startsAt = moment(new Date(date)).startOf('day').toDate();
-            endsAt = moment(new Date(date)).endOf('day').toDate();
+            var userName = user.getActiveUserName().first_name;
+
+            if (allDay) {
+
+                startsAt = moment(new Date(date)).startOf('day').toDate();
+                endsAt = moment(new Date(date)).endOf('day').toDate();
+            }
+
+            var newEvent = new Event(userName, title, color, startsAt, endsAt, draggable, resizable, actions, allDay, comments, image);
+            events.push(newEvent);
+            $location.path("/user");
+            return newEvent;
+
+        } else {
+            alert("Please check the dates to be valid!");
+            return false;
         }
-
-        var newEvent = new Event(userName, title, color, startsAt, endsAt, draggable, resizable, actions, allDay, comments, image);
-        events.push(newEvent);
-        $location.path("/user");
-        return newEvent;
     }
 
     function createEmptyEvent() {
         events.push({
+            userName: user.getActiveUserName().first_name,
             title: 'New event',
             startsAt: moment().toDate(),
             endsAt: moment().toDate(),
@@ -114,6 +156,8 @@ app.factory('event', function ($http, $q, $location, user) {
 
         return userEventsArray;
     }
+
+
 
     return {
         getallEvents: getallEvents,

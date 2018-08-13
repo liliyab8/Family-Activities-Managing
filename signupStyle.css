@@ -1,5 +1,14 @@
 /*-----Background-----*/
 
+.main-body{
+    background-image:url(https://michaelarch.files.wordpress.com/2017/05/d7a0_d7a5_c2bf___c2ac-_____d7a9_c2bf_d7a0__d7a0_d7a3_c2bf-_d7a1_d7a9____c2bf_d7a7__d7a4___d7a2_c2bf_d7a9_c2a5_23-0101.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    width:100%;
+    height:100vh;
+    overflow:auto;    
+}
+
 .signup-body{
     background-image:url(https://i.pinimg.com/736x/e4/2c/51/e42c51ea6633dffbf4f2de802a0193f8--trains-koala-bears.jpg);
     background-repeat:no-repeat;
