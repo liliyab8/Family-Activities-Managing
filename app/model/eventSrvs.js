@@ -20,7 +20,7 @@ app.factory('event', function ($location, user, moment) {
         else {
             this.userName = arguments[0];
             this.title = arguments[1],
-            this.color = arguments[2];
+                this.color = arguments[2];
             this.startsAt = arguments[3];
             this.endsAt = arguments[4];
             this.draggable = arguments[5];
@@ -31,7 +31,7 @@ app.factory('event', function ($location, user, moment) {
             this.image = arguments[10];
         }
     }
-    
+
     var actions = [{
         label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
         onClick: function (args) {
@@ -153,7 +153,7 @@ app.factory('event', function ($location, user, moment) {
 
     function createEmptyEvent() {
         events.push({
-            userName: user.getActiveUserName().first_name, 
+            userName: user.getActiveUserName().first_name,
             title: "New Event",
             color: "orange",
             startsAt: moment().toDate(),
@@ -163,7 +163,7 @@ app.factory('event', function ($location, user, moment) {
             actions: actions,
             allDay: "",
             comments: "",
-            image: "" 
+            image: ""
         });
     }
 
@@ -190,19 +190,25 @@ app.factory('event', function ($location, user, moment) {
     }
 
     function editUserEvents(userEvent) {
-        events.forEach(event => {
-            if (event == tempUserEvent) {
-                event = userEvent;
-            }
-            $location.path("/user");
-        })
+        const now = moment().startOf('day').toDate();
 
-        // var userEventIndex = userEventsArray.indexOf(userEvent);
-        // userEventsArray.splice(userEventIndex, 1);        
-        // userEventIndex = events.indexOf(userEvent);
-        // events.splice(userEventIndex, 1);
+        if ((userEvent.startsAt && userEvent.startsAt > now
+            && userEvent.endsAt && userEvent.endsAt > now
+            && userEvent.startsAt < userEvent.endsAt)
+            || (userEvent.date && userEvent.date > now)) {
 
-        return userEventsArray;
+            events.forEach(event => {
+                if (event == tempUserEvent) {
+                    event = userEvent;
+                }
+                $location.path("/user");
+            })
+            return events;
+
+        } else {
+            alert("Please check the dates to be valid!");
+            return false;
+        }
     }
 
     return {

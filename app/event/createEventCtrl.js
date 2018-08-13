@@ -12,14 +12,6 @@ app.controller("createEventCtrl", function ($scope, event) {
         event.createEvent($scope.title, $scope.startsAt, $scope.endsAt, $scope.allDay, $scope.date, $scope.comments, $scope.image);
     }
 
-    $scope.getUserEvents = function () {
-        return event.getUserEvents();
-    }
-
-    $scope.getallEvents = function () {
-        return event.getallEvents();
-    }
-
     $scope.isAllDayEvent= function () {
         return $scope.allDay;
     }

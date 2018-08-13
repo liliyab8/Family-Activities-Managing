@@ -1,22 +1,32 @@
 app.controller("editEventCtrl", function ($scope, event) {
 
-    $scope.title = "";
-    $scope.startsAt = "";
-    $scope.endsAt = "";
-    $scope.allDay = "";
-    $scope.date = "";
-    $scope.comments = "";
-    $scope.image = "";
+    $scope.tempEvent = event.getEventForEdit();
 
-    var tempEvent = null;
+    $scope.isAllDayEvent= function () {
+        return $scope.tempEvent.allDay;
+    }
 
-    $scope.editUserEvent = function (userEvent) {
+    $scope.isNotAllDayEvent= function () {
+        if($scope.tempEvent.allDay){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 
-        $scope.event = userEvent;
-        $scope.userEventsArray = event.editUserEvents(userEvent);
-        
+    $scope.editUserEvent = function () {  
+        if($scope.tempEvent.allDay)
+        {
+            $scope.tempEvent.startsAt = null;
+            $scope.tempEvent.endsAt = null;
+        }  
+        else{
+            $scope.tempEvent.date = null;
+        }   
+        event.editUserEvents($scope.tempEvent);        
         return;
     }
 
-    $scope.tempEvent = event.getEventForEdit();
+   
 })
