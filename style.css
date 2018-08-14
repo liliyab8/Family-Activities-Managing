@@ -3,7 +3,7 @@
     margin: 0 auto;
 }
 
-.jumbotron-home {
+.home-body {
     background-image: url("http://musicisthelight.com/wp-content/uploads/2017/02/family-sunset-820-1024x585.jpg");
     background-size: cover;
     height: 100%; 
@@ -28,10 +28,6 @@
 }
 
 .calendar {
-    /* margin: 10vw; */
-
-    /* margin-top: 100px; */
-    /* margin-bottom: 100px; */
     margin-right: 5vw;
     margin-left: 5vw;
 }
